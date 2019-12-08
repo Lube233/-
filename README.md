@@ -30,58 +30,58 @@
 选课主要代码
 
 		setTitle("选择课程");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 400);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		GridBagLayout gbl_contentPane = new GridBagLayout();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//X关闭窗口
+		setBounds(100, 100, 800, 400);	//将组件大小
+		contentPane = new JPanel();	//设置一个与容器相关联的内容面板
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));	//设置组件的边框
+		setContentPane(contentPane);	//设置ContentPane
+		GridBagLayout gbl_contentPane = new GridBagLayout();	//设置布局
 		gbl_contentPane.columnWidths = new int[]{185, 136, 0};
 		gbl_contentPane.rowHeights = new int[]{51, 86, 0};
 		gbl_contentPane.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);		
 		Label label = new Label("选择课程");
-		GridBagConstraints gbc_label = new GridBagConstraints();
+		GridBagConstraints gbc_label = new GridBagConstraints();	//布局
 		gbc_label.insets = new Insets(0, 0, 5, 5);
 		gbc_label.gridx = 0;
 		gbc_label.gridy = 0;
 		contentPane.add(label, gbc_label);		
-		DefaultListModel listModel=new DefaultListModel(); 
+		DefaultListModel listModel=new DefaultListModel();	//创建设置列表数据 
 		JList list = new JList(listModel); 
 		GridBagConstraints gbc_list = new GridBagConstraints();
-		gbc_list.insets = new Insets(0, 0, 0, 5);
-		gbc_list.fill = GridBagConstraints.BOTH;
-		gbc_list.gridx = 0; 
-		gbc_list.gridy = 1;
+		gbc_list.insets = new Insets(0, 0, 0, 5);	//组件间距
+		gbc_list.fill = GridBagConstraints.BOTH;	//填充空余
+		gbc_list.gridx = 2;	//X2 
+		gbc_list.gridy = 0;	//Y0
 		contentPane.add(list, gbc_list);
-            BufferedReader br = new BufferedReader(new FileReader("D:\\JAVA实验\\classes_teachers.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("D:\\JAVA实验\\classes_teachers.txt"));	//读取文件
             String demo = br.readLine();
             br.close();
-            String [] demoarray = demo.split(";"); 
-            for (int i=0; i<demoarray.length ;i++) {
-        		listModel.addElement(demoarray[i]); 
+            String [] array = demo.split(";"); 
+            for (int i=0; i<array.length ;i++) {
+        		listModel.addElement(array[i]); 
             }
-		JButton btnNewButton = new JButton("选择");
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		JButton btnNewButton = new JButton("选择");	//按钮事件
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();	//设置布局
 		gbc_btnNewButton.gridwidth = 2;
 		gbc_btnNewButton.gridx = 1;
 		gbc_btnNewButton.gridy = 1;
-		contentPane.add(btnNewButton, gbc_btnNewButton);
+		contentPane.add(btnNewButton, gbc_btnNewButton);	//面板新加按钮
 		btnNewButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				String chosen = (String)list.getSelectedValue()+";"; 
-				 FileWriter writer; 
+				String chosen = (String)list.getSelectedValue()+";";	//只读取string
+				 FileWriter writer;
 			        	BufferedReader br = new BufferedReader(new FileReader("D:\\JAVA实验\\numbers.txt"));
 			            String Student_num = br.readLine();
 			            br.close();
-			            writer = new FileWriter("D:\\JAVA实验\\" + Student_num +".txt",true);		            
+			            writer = new FileWriter("D:\\JAVA实验\\" + Student_num +".txt",true);	//利用write方法将字符串写入	            
 			            writer.append(chosen); 
 			            writer.close();
 			        } }
 			        
-					JOptionPane.showMessageDialog(null, "成功选课！"); 
-				    System.exit（0）；
+					JOptionPane.showMessageDialog(null, "成功选课！");	//弹个对话框 
+				    System.exit(0);
 
 在选课的过程当中主要就是通过将学生选课信息显示出并使用FileWriter的方法使其写到txt文件中去
 
@@ -114,6 +114,17 @@
 		gbc_textField.gridy = 1;
 		contentPane.add(textField, gbc_textField);
 		Label label_1 = new Label("课程名称: ");
+		。。。。。。。
+		        try {
+		            writer = new FileWriter("D:\\JAVA实验\\classes_teachers.txt",true);
+		            writer.append(s6); 
+		            writer.flush();
+		            writer.close();
+		        } catch (IOException e1) {
+		           //ignore
+		        }
+				JOptionPane.showMessageDialog(null, "成功创建");
+			    System.exit(0);
 
 以上课程的创建和之前学生设立相类似，编号、时间、地点、名称都需要设置其label，最后同样通过FileWriter方法。
 
