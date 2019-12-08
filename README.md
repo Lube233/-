@@ -28,7 +28,7 @@
 
 ###四、实验代码
 选课主要代码
-public Chose() {
+
 		setTitle("选择课程");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 400);
@@ -84,7 +84,7 @@ public Chose() {
 				    System.exit(0);
 
 创建课程主要代码
-public Create() {
+
 		setTitle("创建课程");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -114,7 +114,7 @@ public Create() {
 		Label label_1 = new Label("课程名称: ");
 
 系统登陆界面
-public Login() {
+
 		setTitle("进入系统");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(200, 200, 550, 350);
