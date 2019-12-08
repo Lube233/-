@@ -81,9 +81,10 @@
 			        } }
 			        
 					JOptionPane.showMessageDialog(null, "成功选课！"); 
-				    System.out（0）；
+				    System.exit（0）；
 
 在选课的过程当中主要就是通过将学生选课信息显示出并使用FileWriter的方法使其写到txt文件中去
+
 创建课程主要代码
 
 		setTitle("创建课程");
@@ -115,6 +116,7 @@
 		Label label_1 = new Label("课程名称: ");
 
 以上课程的创建和之前学生设立相类似，编号、时间、地点、名称都需要设置其label，最后同样通过FileWriter方法。
+
 系统登陆界面
 
 		setTitle("进入系统");
@@ -137,5 +139,6 @@
 		contentPane.add(rdbtnNewRadioButton_1, gbc_rdbtnNewRadioButton_1);			  
 		JLabel lblNewLabel = new JLabel("号码");
 此处要有老师的登陆和学生的登陆
+
 ###五、实验体会
 本次实验又回归到了之前实验的后续，需要根据之前GUI进行修改并引入异常处理，以及基于事件模型对业务逻辑的一个编程。在实验中利用文件的读取利用很好的使学生选课系统更为完善。但是在实验过程中，因为版本问题总是会报很多错出来，需要把自己的版本降低，这块也训练了我分析问题的能力，库的引入本来就不应该报错的地方如果出现了问题就应该去好好查看一下。总之是最后一个实验了，收获颇丰，希望可以得到一个较高的分数并在之后的语言学习中应用到java学习的逻辑。
