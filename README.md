@@ -27,7 +27,113 @@
 见图片
 
 ###四、实验代码
-详见具体代码
+选课主要代码
+>public Chose() {
+		setTitle("选择课程");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 800, 400);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.columnWidths = new int[]{185, 136, 0};
+		gbl_contentPane.rowHeights = new int[]{51, 86, 0};
+		gbl_contentPane.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		contentPane.setLayout(gbl_contentPane);		
+		Label label = new Label("选择课程");
+		GridBagConstraints gbc_label = new GridBagConstraints();
+		gbc_label.insets = new Insets(0, 0, 5, 5);
+		gbc_label.gridx = 0;
+		gbc_label.gridy = 0;
+		contentPane.add(label, gbc_label);		
+		DefaultListModel listModel=new DefaultListModel(); 
+		JList list = new JList(listModel); 
+		GridBagConstraints gbc_list = new GridBagConstraints();
+		gbc_list.insets = new Insets(0, 0, 0, 5);
+		gbc_list.fill = GridBagConstraints.BOTH;
+		gbc_list.gridx = 0; 
+		gbc_list.gridy = 1;
+		contentPane.add(list, gbc_list);
+            BufferedReader br = new BufferedReader(new FileReader("D:\\JAVA实验\\classes_teachers.txt"));
+            String demo = br.readLine();
+            br.close();
+            String [] demoarray = demo.split(";"); 
+            for (int i=0; i<demoarray.length ;i++) {
+        		listModel.addElement(demoarray[i]); 
+            }
+		JButton btnNewButton = new JButton("选择");
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.gridwidth = 2;
+		gbc_btnNewButton.gridx = 1;
+		gbc_btnNewButton.gridy = 1;
+		contentPane.add(btnNewButton, gbc_btnNewButton);
+		btnNewButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				String chosen = (String)list.getSelectedValue()+";"; 
+				 FileWriter writer; 
+			        	BufferedReader br = new BufferedReader(new FileReader("D:\\JAVA实验\\numbers.txt"));
+			            String Student_num = br.readLine();
+			            br.close();
+			            writer = new FileWriter("D:\\JAVA实验\\" + Student_num +".txt",true);		            
+			            writer.append(chosen); 
+			            writer.close();
+			        } }
+			        
+					JOptionPane.showMessageDialog(null, "成功选课！"); 
+				    System.exit(0);
+
+创建课程主要代码
+>public Create() {
+		setTitle("创建课程");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.columnWidths = new int[]{93, 142, 164, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPane.columnWeights = new double[]{1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		contentPane.setLayout(gbl_contentPane);		
+		Label label = new Label("课程编号: ");
+		//label.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 12));
+		GridBagConstraints gbc_label = new GridBagConstraints();
+		gbc_label.insets = new Insets(0, 0, 5, 5);
+		gbc_label.gridx = 0;
+		gbc_label.gridy = 1;
+		contentPane.add(label, gbc_label);
+		TextField textField = new TextField();
+		GridBagConstraints gbc_textField = new GridBagConstraints();
+		gbc_textField.fill = GridBagConstraints.BOTH;
+		gbc_textField.insets = new Insets(0, 0, 5, 5);
+		gbc_textField.gridx = 1;
+		gbc_textField.gridy = 1;
+		contentPane.add(textField, gbc_textField);
+		Label label_1 = new Label("课程名称: ");
+
+系统登陆界面
+>public Login() {
+		setTitle("进入系统");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(200, 200, 550, 350);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		contentPane.setLayout(gbl_contentPane);	
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("学生");
+		GridBagConstraints gbc_rdbtnNewRadioButton_1 = new GridBagConstraints();
+		gbc_rdbtnNewRadioButton_1.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnNewRadioButton_1.gridx = 1;
+		gbc_rdbtnNewRadioButton_1.gridy = 0;
+		contentPane.add(rdbtnNewRadioButton_1, gbc_rdbtnNewRadioButton_1);			  
+		JLabel lblNewLabel = new JLabel("号码");
 
 ###五、实验体会
 本次实验又回归到了之前实验的后续，需要根据之前GUI进行修改并引入异常处理，以及基于事件模型对业务逻辑的一个编程。在实验中利用文件的读取利用很好的使学生选课系统更为完善。但是在实验过程中，因为版本问题总是会报很多错出来，需要把自己的版本降低，这块也训练了我分析问题的能力，库的引入本来就不应该报错的地方如果出现了问题就应该去好好查看一下。总之是最后一个实验了，收获颇丰，希望可以得到一个较高的分数并在之后的语言学习中应用到java学习的逻辑。
