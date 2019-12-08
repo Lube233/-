@@ -81,7 +81,7 @@
 			        } }
 			        
 					JOptionPane.showMessageDialog(null, "成功选课！"); 
-				    系统退出（0）；
+				    System.out（0）；
 
 在选课的过程当中主要就是通过将学生选课信息显示出并使用FileWriter的方法使其写到txt文件中去
 创建课程主要代码
